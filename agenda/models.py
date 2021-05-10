@@ -47,9 +47,16 @@ class ActivityType(models.Model):
 class ActivitiesPatient(models.Model):
     name = models.CharField(max_length=20, verbose_name='Nombre')
     activity_type = models.ForeignKey(ActivityType, on_delete=models.CASCADE, verbose_name='Tipo de actividad')
-    report = models.CharField(max_length=15, verbose_name='reporte')
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, verbose_name='Paciente')
+    date = models.DateField(verbose_name='Fecha de actividad')
+    time = models.TimeField(verbose_name='Hora de actividad')
+    image = models.ImageField(upload_to='report/images/', verbose_name='Imagen reporte', blank=True)
+    record = models.FileField(upload_to='report/audio/', verbose_name='Audio reporte', blank=True)
+    text = models.CharField(max_length=200, verbose_name='Texto reporte', blank=False)
 
+    
+    def __unicode__(self,):
+        return str(self.image)
 
     def __str__(self):
         return "%s - %s" % (self.patient, self.name)

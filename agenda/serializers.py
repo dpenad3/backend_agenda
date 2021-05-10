@@ -20,4 +20,4 @@ class ActivityTypeSerializer(serializers.ModelSerializer):
 class ActivitiesPatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActivitiesPatient
-        fields = ('id', 'name', 'activity_type', 'report', 'patient')
+        fields = ('id', 'name', 'activity_type', 'patient', 'date', 'time', 'image', 'record', 'text')
